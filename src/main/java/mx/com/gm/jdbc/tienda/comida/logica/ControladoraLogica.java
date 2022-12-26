@@ -36,7 +36,7 @@ public class ControladoraLogica {
         //Armo el pedido
         Pedido pedido = new Pedido();
         pedido.setUnCliente(cliente);
-        pedido.setListaComidas((List<Comida>) comida);
+        pedido.setListaComidas(comida);
         
         controlPersistencia.crearPedido(cliente,comida,pedido);
         

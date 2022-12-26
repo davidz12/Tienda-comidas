@@ -16,7 +16,7 @@ public class Pedido implements Serializable {
     @OneToOne
     private Cliente unCliente;
     @OneToMany
-    private List<Comida> listaComidas;
+    private Comida comida;
 
     public Pedido() {
     }
@@ -24,7 +24,7 @@ public class Pedido implements Serializable {
     public Pedido(int idPedido, Cliente unCliente, List<Comida> listaComidas) {
         this.idPedido = idPedido;
         this.unCliente = unCliente;
-        this.listaComidas = listaComidas;
+        this.comida = comida;
     }
 
     public int getIdPedido() {
@@ -43,12 +43,12 @@ public class Pedido implements Serializable {
         this.unCliente = unCliente;
     }
 
-    public List<Comida> getListaComidas() {
-        return listaComidas;
+    public Comida getComida() {
+        return comida;
     }
 
-    public void setListaComidas(List<Comida> listaComidas) {
-        this.listaComidas = listaComidas;
+    public void setListaComidas(Comida comida) {
+        this.comida = comida;
     }
     
     

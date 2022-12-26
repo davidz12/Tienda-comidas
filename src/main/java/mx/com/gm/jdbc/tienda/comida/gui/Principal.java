@@ -5,6 +5,8 @@
 package mx.com.gm.jdbc.tienda.comida.gui;
 
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import mx.com.gm.jdbc.tienda.comida.logica.Comida;
 import mx.com.gm.jdbc.tienda.comida.logica.ControladoraLogica;
 
@@ -264,6 +266,7 @@ public class Principal extends javax.swing.JFrame {
        controlLogica.crearPedido(nombre,apellido,celular,vianda);
        
        
+       mostrarMensaje("Enviado correctamente", "Info", "Envio solicitado");
        
        
     }//GEN-LAST:event_btnEnviarPedidoActionPerformed
@@ -274,6 +277,20 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowActivated
 
+    
+    private void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("Error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

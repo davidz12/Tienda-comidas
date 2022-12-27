@@ -1,5 +1,6 @@
 package mx.com.gm.jdbc.tienda.comida.persistencia;
 
+import java.util.List;
 import mx.com.gm.jdbc.tienda.comida.logica.Cliente;
 import mx.com.gm.jdbc.tienda.comida.logica.Comida;
 import mx.com.gm.jdbc.tienda.comida.logica.Pedido;
@@ -13,5 +14,9 @@ public class ControladoraPersistencia {
         clienteJpa.create(cliente);
         comidaJpa.create(comida);
         pedidoJpa.create(pedido);
+    }
+
+    public List<Pedido> traerPedidos() {
+        return pedidoJpa.findPedidoEntities();
     }
 }

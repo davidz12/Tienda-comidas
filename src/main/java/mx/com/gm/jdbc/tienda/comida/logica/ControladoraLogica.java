@@ -22,6 +22,7 @@ public class ControladoraLogica {
         //-------------------------------------------------
         //Vianda.
         Comida comida = new Comida();
+        List <Comida> comidas = new ArrayList();
         comida.setNombreComida(vianda);
         
         //Defino el precio por seleccion de comida.
@@ -34,7 +35,6 @@ public class ControladoraLogica {
             }
         }
         comida.setPrecio(precio);
-        List <Comida> comidas = new ArrayList();
         comidas.add(comida);
         
         //-------------------------------------------------
@@ -45,6 +45,15 @@ public class ControladoraLogica {
         
         controlPersistencia.crearPedido(cliente,comida,pedido);
         
+    }
+
+    public List<Pedido> traerPedidos() {
+        
+        return controlPersistencia.traerPedidos();
+    }
+
+    public void eliminarRegistro(int num_pedido) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

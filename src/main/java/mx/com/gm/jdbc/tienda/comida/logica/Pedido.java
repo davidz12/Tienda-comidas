@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 @Entity
 public class Pedido implements Serializable {
     @Id
@@ -16,7 +17,7 @@ public class Pedido implements Serializable {
     @OneToOne
     private Cliente unCliente;
     @OneToMany
-    private Comida comida;
+    private List<Comida> listaComidas;
 
     public Pedido() {
     }
@@ -24,8 +25,10 @@ public class Pedido implements Serializable {
     public Pedido(int idPedido, Cliente unCliente, List<Comida> listaComidas) {
         this.idPedido = idPedido;
         this.unCliente = unCliente;
-        this.comida = comida;
+        this.listaComidas = listaComidas;
     }
+
+    
 
     public int getIdPedido() {
         return idPedido;
@@ -43,12 +46,12 @@ public class Pedido implements Serializable {
         this.unCliente = unCliente;
     }
 
-    public Comida getComida() {
-        return comida;
+    public List<Comida> getComida() {
+        return listaComidas;
     }
 
     public void setListaComidas(Comida comida) {
-        this.comida = comida;
+        this.listaComidas = (List<Comida>) comida;
     }
     
     

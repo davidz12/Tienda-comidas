@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package mx.com.gm.jdbc.tienda.comida.persistencia;
 
 import java.io.Serializable;
@@ -12,6 +16,10 @@ import javax.persistence.criteria.Root;
 import mx.com.gm.jdbc.tienda.comida.logica.Pedido;
 import mx.com.gm.jdbc.tienda.comida.persistencia.exceptions.NonexistentEntityException;
 
+/**
+ *
+ * @author davo2
+ */
 public class PedidoJpaController implements Serializable {
 
     public PedidoJpaController(EntityManagerFactory emf) {
@@ -21,7 +29,6 @@ public class PedidoJpaController implements Serializable {
     public PedidoJpaController() {
         emf = Persistence.createEntityManagerFactory("tiendaJPA");
     }
-    
     
     private EntityManagerFactory emf = null;
 

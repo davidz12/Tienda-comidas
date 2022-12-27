@@ -1,5 +1,6 @@
 package mx.com.gm.jdbc.tienda.comida.logica;
 
+import java.util.ArrayList;
 import java.util.List;
 import mx.com.gm.jdbc.tienda.comida.persistencia.ControladoraPersistencia;
 
@@ -17,6 +18,8 @@ public class ControladoraLogica {
         cliente.setApellido(apellido);
         cliente.setCelular(celular);
         
+
+        //-------------------------------------------------
         //Vianda.
         Comida comida = new Comida();
         comida.setNombreComida(vianda);
@@ -31,12 +34,14 @@ public class ControladoraLogica {
             }
         }
         comida.setPrecio(precio);
+        List <Comida> comidas = new ArrayList();
+        comidas.add(comida);
         
-        
+        //-------------------------------------------------
         //Armo el pedido
         Pedido pedido = new Pedido();
         pedido.setUnCliente(cliente);
-        pedido.setListaComidas(comida);
+        pedido.setListaComidas(comidas);
         
         controlPersistencia.crearPedido(cliente,comida,pedido);
         

@@ -268,6 +268,8 @@ public class Principal extends javax.swing.JFrame {
        
        mostrarMensaje("Enviado correctamente", "Info", "Envio solicitado");
        
+       this.dispose();
+       
        
     }//GEN-LAST:event_btnEnviarPedidoActionPerformed
 

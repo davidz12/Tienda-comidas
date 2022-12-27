@@ -46,13 +46,15 @@ public class Pedido implements Serializable {
         this.unCliente = unCliente;
     }
 
-    public List<Comida> getComida() {
+    public List<Comida> getListaComidas() {
         return listaComidas;
     }
 
-    public void setListaComidas(Comida comida) {
-        this.listaComidas = (List<Comida>) comida;
+    public void setListaComidas(List<Comida> listaComidas) {
+        this.listaComidas = listaComidas;
     }
+
+    
     
     
 }

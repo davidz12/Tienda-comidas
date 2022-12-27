@@ -53,7 +53,11 @@ public class ControladoraLogica {
     }
 
     public void eliminarRegistro(int num_pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        controlPersistencia.eliminarRegistro(num_pedido);
+    }
+
+    public Pedido traerPedido(int num_pedido) {
+        return controlPersistencia.traerPedido(num_pedido);
     }
     
 }

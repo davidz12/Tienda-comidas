@@ -9,19 +9,24 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import mx.com.gm.jdbc.tienda.comida.logica.Comida;
 import mx.com.gm.jdbc.tienda.comida.logica.ControladoraLogica;
+import mx.com.gm.jdbc.tienda.comida.logica.Pedido;
 
 /**
  *
  * @author davo2
  */
 public class ModificarDatos extends javax.swing.JFrame {
-    ControladoraLogica controlLogica = new ControladoraLogica();
+    ControladoraLogica controlLogica = null;
+    int num_pedido;
+    Pedido pedido;
 
     /**
      * Creates new form Principal
      */
     public ModificarDatos() {
+        controlLogica = new ControladoraLogica();
         initComponents();
+        cargarDatos(num_pedido);
     }
 
     /**
@@ -78,7 +83,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
-        btnEnviarPedido = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         cmbVianda = new javax.swing.JComboBox<>();
         txtCelular = new javax.swing.JTextField();
 
@@ -183,10 +188,10 @@ public class ModificarDatos extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel5.setText("CREAR PEDIDO");
 
-        btnEnviarPedido.setText("ENVIAR PEDIDO");
-        btnEnviarPedido.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setText("GUARDAR CAMBIOS");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviarPedidoActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
 
@@ -223,7 +228,7 @@ public class ModificarDatos extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(267, 267, 267))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnEnviarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(222, 222, 222))))
         );
         layout.setVerticalGroup(
@@ -248,14 +253,14 @@ public class ModificarDatos extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(cmbVianda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(btnEnviarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEnviarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPedidoActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
        
         
        String nombre = txtNombre.getText();
@@ -271,7 +276,7 @@ public class ModificarDatos extends javax.swing.JFrame {
        this.dispose();
        
        
-    }//GEN-LAST:event_btnEnviarPedidoActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
@@ -294,9 +299,14 @@ public class ModificarDatos extends javax.swing.JFrame {
         dialog.setVisible(true);
     }
     
+    
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnviarPedido;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -345,4 +355,24 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos(int num_pedido) {
+        this.pedido = controlLogica.traerPedido(num_pedido);
+        
+        txtNombre.setText(pedido.getUnCliente().getNombre());
+        txtApellido.setText(pedido.getUnCliente().getApellido());
+        txtCelular.setText(pedido.getUnCliente().getCelular());
+        
+        if(pedido.getListaComidas().equals("Ribs BBQ")) {
+            cmbVianda.setSelectedIndex(1);
+        }else if(pedido.getListaComidas().equals("Hamburguesa")) {
+            cmbVianda.setSelectedIndex(2);
+        }else if(pedido.getListaComidas().equals("Ensalada")) {
+            cmbVianda.setSelectedIndex(3);
+        }else if(pedido.getListaComidas().equals("Arroz con pollo")) {
+            cmbVianda.setSelectedIndex(4);
+        }
+    }
 }
+
+

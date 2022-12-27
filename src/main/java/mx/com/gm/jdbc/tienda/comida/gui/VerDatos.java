@@ -116,7 +116,7 @@ public class VerDatos extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         if(tablaPedidos.getRowCount() > 0) {
-            if (tablaPedidos.getSelectedRow() != .1) {
+            if (tablaPedidos.getSelectedRow() != -1) {
                 int num_pedido = Integer.parseInt(String.valueOf(tablaPedidos.getValueAt(tablaPedidos.getSelectedRow(), 0)));
             
                 controlLogica.eliminarRegistro(num_pedido);
@@ -137,10 +137,17 @@ public class VerDatos extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if(tablaPedidos.getRowCount() > 0) {
-            if (tablaPedidos.getSelectedRow() != .1) {
-                int num_pedido = Integer.parseInt(String.valueOf(tablaPedidos.getValueAt(tablaPedidos.getSelectedRow(), 0)));
-            
-                controlLogica.editarRegistro(num_pedido);
+            if (tablaPedidos.getSelectedRow() != -1) {
+                ModificarDatos pantallaModificar = new ModificarDatos();
+                pantallaModificar.setVisible(true);
+                pantallaModificar.setLocationRelativeTo(null);
+            }
+            else {
+                mostrarMensaje("No se seleccionaron registros","Error","Error al editar");
+            }
+        }else {
+            mostrarMensaje("No hay registros","Error","Error al editar");
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     
